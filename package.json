@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "publish": "electron-builder --publish always"
   },
   "build": {
     "appId": "com.abir.googlechat",
@@ -36,5 +37,12 @@
   "devDependencies": {
     "electron": "^35.0.2",
     "electron-builder": "^25.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abirtasrif/google-chat-desktop"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

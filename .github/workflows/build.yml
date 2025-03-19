@@ -1,4 +1,4 @@
-name: Build Electron App
+name: Build and Publish Electron App
 
 on:
   push:
@@ -21,7 +21,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # Use Node.js 18 (or the version your app requires)
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          scope: "@your-github-username" # Replace with your GitHub username or organization
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -33,7 +35,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required for electron-builder to publish releases
 
-      # Step 5: Upload build artifacts
+      # Step 5: Publish to GitHub Packages
+      - name: Publish to GitHub Packages
+        run: npm run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 6: Upload build artifacts (optional)
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
