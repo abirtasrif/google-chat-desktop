@@ -19,9 +19,9 @@ jobs:
 
       # Step 2: Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18 # Use Node.js 18 (or the version your app requires)
+          node-version: 20 # Use Node.js 18 (or the version your app requires)
 
       # Step 3: Install dependencies
       - name: Install dependencies
